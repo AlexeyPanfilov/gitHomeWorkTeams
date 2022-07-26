@@ -38,28 +38,35 @@ public class Main {
             }
             String[] parts = input.split(" ");
 
-            if (parts.length != 2) {
-                System.out.println("Некорректный ввод! Нужно ввести два числа!");
-                continue;
-            }
-
             try {
                 numProduct = Integer.parseInt(parts[0]) - 1;
                 amount = Integer.parseInt(parts[1]);
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка ввода! Нужно вводить только числа, а не текст!");
                 continue;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Некорректный ввод! Нужно ввести два числа!");
+                continue;
+            } if (parts.length != 2) {
+                System.out.println("Некорректный ввод! Нужно ввести два числа!");
+                continue;
             }
 
-            if (numProduct < 0 || numProduct > 4) {
+            if (numProduct < 0 || numProduct > products.length) {
                 System.out.println("Некорректный ввод позиции! Нужно выбрать номер позиции из списка!");
                 continue;
             }
 
-            numb[numProduct] += amount;//сумма штук введенного
+            if (amount == 0) {
+                numb [numProduct] = 0;
+            }
 
-            int sum = amount * prises[numProduct];
-            ollSum += sum;// подсчет общей суммы списка
+            if ((numb[numProduct] + amount) < 0) {
+                numb[numProduct] = 0;
+            } else {
+                numb[numProduct] += amount;
+            }
+
         }
 
         System.out.println("Ваша корзина: ");
@@ -68,6 +75,7 @@ public class Main {
             if (numb[i] != 0) {
                 System.out.println(products[i] + " " + numb[i] + " шт " +
                         prises[i] + " руб/шт " + (numb[i] * prises[i]) + " в сумме");
+                ollSum += (numb[i] * prises[i]);
             }
         }
 
