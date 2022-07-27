@@ -9,7 +9,6 @@ public class Main {
                 "Сыр",
                 "Картофель",
                 "Хлеб",
-                "Морковь"
         };
 
         int[] prises = {
@@ -17,11 +16,10 @@ public class Main {
                 50,
                 200,
                 35,
-                45,
-                20
+                45
         };
 
-        int[] numb = new int[products.length];
+        int[] numb = new int[5];
 
         System.out.println("Список возможных товаров для покупки: ");
         for (int i = 0; i < products.length; i++) {
