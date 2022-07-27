@@ -7,7 +7,7 @@ public class Main {
                 "Молоко",
                 "Яблоки",
                 "Сыр",
-                "Морковь", // здесь должен быть конфликт! Если нет, я не знаю ещё как его вызвать! Мне весь код что ли переписать специально?
+                "Картофель",
                 "Хлеб",
         };
 
@@ -15,11 +15,11 @@ public class Main {
                 80,
                 50,
                 200,
-                25,
+                35,
                 45
         };
 
-        int[] numb = new int[products.length];
+        int[] numb = new int[5];
 
         System.out.println("Список возможных товаров для покупки: ");
         for (int i = 0; i < products.length; i++) {
@@ -31,10 +31,8 @@ public class Main {
         int amount = 0;
 
         while (true) {
-
             System.out.println("Выберите товар и количество или введите end для перехода к товарам по акции.");
             String input = scanner.nextLine();//1 2
-
             if (input.equals("end")) {
                 break;
             }
@@ -46,7 +44,6 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println("Ошибка ввода! Нужно вводить только числа или end!");
                 continue;
-
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Некорректный ввод! Нужно ввести два числа или end!");
                 continue;
@@ -55,15 +52,21 @@ public class Main {
                 continue;
             }
 
-            if (numProduct < 0 || numProduct > 4) {
+            if (numProduct < 0 || numProduct > products.length) {
                 System.out.println("Некорректный ввод позиции! Нужно выбрать номер позиции из списка!");
                 continue;
             }
 
-            numb[numProduct] += amount;//сумма штук введенного
+            if (amount == 0) {
+                numb [numProduct] = 0;
+            }
 
-            int sum = amount * prises[numProduct];
-            ollSum += sum;// подсчет общей суммы списка
+            if ((numb[numProduct] + amount) < 0) {
+                numb[numProduct] = 0;
+            } else {
+                numb[numProduct] += amount;
+            }
+
         }
 
         System.out.println("Ваша корзина: ");
@@ -72,6 +75,7 @@ public class Main {
             if (numb[i] != 0) {
                 System.out.println(products[i] + " " + numb[i] + " шт " +
                         prises[i] + " руб/шт " + (numb[i] * prises[i]) + " в сумме");
+                ollSum += (numb[i] * prises[i]);
             }
         }
 
