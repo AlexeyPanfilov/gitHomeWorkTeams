@@ -7,7 +7,7 @@ public class Main {
                 "Молоко",
                 "Яблоки",
                 "Сыр",
-                "Картофель",
+                "Морковь", // здесь должен быть конфликт! Если нет, я не знаю ещё как его вызвать! Мне весь код что ли переписать специально?
                 "Хлеб",
         };
 
@@ -15,11 +15,11 @@ public class Main {
                 80,
                 50,
                 200,
-                35,
+                25,
                 45
         };
 
-        int[] numb = new int[5];
+        int[] numb = new int[products.length];
 
         System.out.println("Список возможных товаров для покупки: ");
         for (int i = 0; i < products.length; i++) {
@@ -32,7 +32,7 @@ public class Main {
 
         while (true) {
             System.out.println(System.lineSeparator() + "Выберите товар и количество или нажмите end");
-            String input = scanner.nextLine();//1 2
+            String input = scanner.nextLine();
             if (input.equals("end")) {
                 break;
             }
