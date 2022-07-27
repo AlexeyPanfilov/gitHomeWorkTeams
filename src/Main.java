@@ -40,11 +40,6 @@ public class Main {
             }
             String[] parts = input.split(" ");
 
-            if (parts.length != 2) {
-                System.out.println("Некорректный ввод! Нужно ввести два числа!");
-                continue;
-            }
-
             try {
                 numProduct = Integer.parseInt(parts[0]) - 1;
                 amount = Integer.parseInt(parts[1]);
