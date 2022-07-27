@@ -42,7 +42,13 @@ public class Main {
                 numProduct = Integer.parseInt(parts[0]) - 1;
                 amount = Integer.parseInt(parts[1]);
             } catch (NumberFormatException e) {
-                System.out.println("Ошибка ввода! Нужно вводить только числа, а не текст!");
+                System.out.println("Ошибка ввода! Нужно вводить только числа или end!");
+                continue;
+            } catch (ArrayIndexOutOfBoundsException e) {
+                System.out.println("Некорректный ввод! Нужно ввести два числа или end!");
+                continue;
+            } if (parts.length != 2) {
+                System.out.println("Некорректный ввод! Нужно ввести два числа или end!");
                 continue;
             } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Некорректный ввод! Нужно ввести два числа!");
